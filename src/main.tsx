@@ -1,17 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ChakraBaseProvider } from '@chakra-ui/react'
+
 import App from './App.tsx'
-import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
-import chakraTheme from '@chakra-ui/theme'
-
-const { Button, Input } = chakraTheme.components
-
-const theme = extendBaseTheme({
-  components: {
-    Button,
-    Input,
-  },
-})
+import { theme } from './configs/chakra-theme.ts'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
