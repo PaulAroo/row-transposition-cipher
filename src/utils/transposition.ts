@@ -9,7 +9,12 @@ export function encrypt(plain_text: string, k: string): string {
   const matrix: string[] = []
   let offset = 0
   for (let i = 0; i < col_length; i++) {
-    matrix.push(clean_plain_text.slice(offset, offset + row_length))
+    let slice = clean_plain_text.slice(offset, offset + row_length)
+    if (slice.length < key.length) {
+      const white_space = ' '
+      slice += white_space.repeat(key.length - slice.length)
+    }
+    matrix.push(slice)
     offset += row_length
   }
 
