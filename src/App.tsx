@@ -5,14 +5,13 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Input,
-  Stack,
   Textarea,
   VStack,
 } from '@chakra-ui/react'
 import ColorModeToggle from './components/colorModeToggle'
 import { KeyInput } from './components/keyInput'
 import { useState } from 'react'
+import { decrypt, encrypt } from './utils/transposition'
 
 function App() {
   const [plain_text_value, setPlainTextValue] = useState('')
@@ -34,8 +33,19 @@ function App() {
     setKeyValue(e.target.value)
   }
 
+  const handleEncrption = () => {
+    const cipher_text = encrypt(plain_text_value, keyValue)
+    setCipherTextValue(cipher_text)
+    setPlainTextValue('')
+  }
+  const handleDecryption = () => {
+    const plain_text = decrypt(cipher_text_value, keyValue)
+    setPlainTextValue(plain_text)
+    setCipherTextValue('')
+  }
+
   return (
-    <Container pt={'2.5'}>
+    <Container pt={'6'}>
       <Flex justifyContent={'space-between'} alignItems={'center'}>
         <Heading as={'h1'} size={'lg'}>
           Row Transposition Cipher
@@ -64,6 +74,7 @@ function App() {
             type="submit"
             colorScheme="blue"
             size={'sm'}
+            onClick={handleEncrption}
           >
             encrypt
           </Button>
@@ -93,6 +104,7 @@ function App() {
             type="submit"
             colorScheme="blue"
             size={'sm'}
+            onClick={handleDecryption}
           >
             decrypt
           </Button>

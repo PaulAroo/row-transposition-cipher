@@ -14,7 +14,7 @@ export function KeyInput({
     <InputGroup w={'fit-content'}>
       <Input
         type={show ? 'text' : 'password'}
-        placeholder={`e.g "hack"`}
+        placeholder={`unique letters e.g "hack"`}
         _placeholder={{
           opacity: 0.4,
           fontStyle: 'italic',
@@ -22,7 +22,7 @@ export function KeyInput({
         onChange={onKeyChange}
       />
       <InputRightElement>
-        <Button onClick={handleClick}>
+        <Button onClick={handleClick} variant={'ghost'}>
           {show ? <ViewIcon /> : <ViewOffIcon />}
         </Button>
       </InputRightElement>
