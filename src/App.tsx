@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Button,
   Container,
   Flex,
@@ -95,6 +96,11 @@ function App() {
               opacity: 0.4,
               fontStyle: 'italic',
             }}
+            isDisabled
+            _disabled={{
+              opacity: 1,
+              cursor: 'not-allowed',
+            }}
           />
           <Button
             isDisabled={!cipher_text_value.length || !keyValue.length}
@@ -109,6 +115,13 @@ function App() {
             decrypt
           </Button>
         </FormControl>
+        <AspectRatio mt={8} w="full" maxW="560px" ratio={16 / 9}>
+          <iframe
+            title="Row transposition cipher technique"
+            src="https://www.youtube.com/embed/cPQXaYUMOjQ"
+            allowFullScreen
+          />
+        </AspectRatio>
       </VStack>
     </Container>
   )
