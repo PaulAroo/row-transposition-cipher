@@ -1,4 +1,4 @@
-function remove_duplicate_chars(str: string) {
+export function remove_duplicate_chars(str: string) {
   const deduped_arr = [...new Set(str.split(''))]
   return deduped_arr.join('')
 }

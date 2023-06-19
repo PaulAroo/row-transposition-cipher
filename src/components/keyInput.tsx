@@ -4,7 +4,9 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 
 export function KeyInput({
   onKeyChange,
+  keyValue,
 }: {
+  keyValue: string
   onKeyChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
   const [show, setShow] = React.useState(false)
@@ -13,10 +15,11 @@ export function KeyInput({
   return (
     <InputGroup w={'fit-content'}>
       <Input
+        value={keyValue}
         type={show ? 'text' : 'password'}
         placeholder={`unique letters e.g "hack"`}
         _placeholder={{
-          opacity: 0.4,
+          opacity: 0.6,
           fontStyle: 'italic',
         }}
         onChange={onKeyChange}
