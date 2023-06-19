@@ -1,9 +1,18 @@
+function remove_duplicate_chars(str: string) {
+  const deduped_arr = [...new Set(str.split(''))]
+  return deduped_arr.join('')
+}
+
+function clean_white_space(str: string, separator?: string) {
+  return str.split(' ').join(separator)
+}
+
 export function encrypt(plain_text: string, k: string): string {
-  const key: string = k.split(' ').join()
+  const key: string = remove_duplicate_chars(clean_white_space(k, ''))
   const sorted_key = key.split('').sort()
 
   const row_length = key.length
-  const clean_plain_text = plain_text.split(' ').join('_')
+  const clean_plain_text = clean_white_space(plain_text, '_')
   const col_length = Math.ceil(clean_plain_text.length / key.length)
 
   const matrix: string[] = []
@@ -31,7 +40,7 @@ export function encrypt(plain_text: string, k: string): string {
 }
 
 export function decrypt(cipher_text: string, k: string): string {
-  const key: string = k.split(' ').join()
+  const key: string = remove_duplicate_chars(clean_white_space(k, ''))
   const sorted_key = key.split('').sort()
   const col_length = Math.ceil(cipher_text.length / key.length)
 
